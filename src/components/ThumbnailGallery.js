@@ -10,7 +10,7 @@ import { ThumbnailGrid } from './ThumbnailGrid'
 const ThumbnailGallery = (props) => {
 
   const [thumbnails, setThumbnails] = useState([])
-  const [activeIndex, setActiveIndex] = useState(0)
+  // const [activeIndex, setActiveIndex] = useState(0)
   let [page, setPage] = useState(1)
 
   useEffect((page) => {
@@ -61,9 +61,9 @@ const ThumbnailGallery = (props) => {
 
   function handleClick (e){
 
-    const activeIndex = e.target.getAttribute('data-index')
-    setActiveIndex(activeIndex)
-    props.setActiveThumbnail(thumbnails[activeIndex])
+    const activeIndex1 = e.target.getAttribute('data-index')
+    // setActiveIndex(activeIndex1)
+    props.setActiveThumbnail(thumbnails[activeIndex1])
   }
 
 return(
@@ -74,5 +74,6 @@ return(
 
     </React.Fragment>
 )}
+
 
 export default ThumbnailGallery

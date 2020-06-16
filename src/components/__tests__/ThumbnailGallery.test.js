@@ -4,8 +4,18 @@ import ActiveThumbnailWindow from '../ActiveThumbnailWindow'
 import renderer from 'react-test-renderer';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { mount, shallow, configure} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16'
+// import configureStore from 'redux-mock-store';
+// import sinon from 'sinon';
+import { StaticRouter } from 'react-router-dom'
+import expect from "expect";
+
 
 jest.mock('axios')
+configure({ adapter: new Adapter() });
+// const mockStore = configureStore();
+// sinon.spy(ThumbnailGallery.prototype, 'useEffect');
 
 describe('Snapshot Testing', () => {
 
