@@ -1,14 +1,13 @@
 # react-photo-gallery
 
-Instructions:
 
-Run Project:
+## Run Project:
 
-npm install
-npm start
+- npm install
+- npm start
 
-Test Project:
-npm test
+## Test Project:
+- npm test
 
 
 Project runs on http://localhost:3000
