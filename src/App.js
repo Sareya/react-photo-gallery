@@ -1,10 +1,9 @@
 import React , { useState} from 'react'
-import { Global } from '@emotion/core'
 import { BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
 import withBreadcrumbs from "react-router-breadcrumbs-hoc"
-import ThumbnailGallery from './components/ThumbnailGallery'
-import ActiveThumbnailWindow from './components/ActiveThumbnailWindow'
-import { GlobalCSS } from './AppStyle'
+import PhotoGallery from './components/PhotoGallery'
+import ActivePhoto from './components/ActivePhoto'
+import  './styles/AppStyle.css'
 
 /**
  * @function App
@@ -14,11 +13,11 @@ const App = () => {
 
   const [activeThumbnail, setActiveThumbnail] = useState([])
 
-  const routes = [{ path: "/", breadcrumb: 'ThumbnailView' },
-                  { path: "/second", breadcrumb: '/Detail View' }];
+  const routes = [{ path: "/", breadcrumb: 'Photo Gallery' },
+                  { path: "/detail", breadcrumb: ' / Photo Details' }];
 
   const Breadcrumbs = withBreadcrumbs(routes)(({ breadcrumbs }) => (
-  <div>
+  <div className="breadcrumb-style">
     {breadcrumbs.map(({ match, breadcrumb }) => (
       <span key={match.url}>
         <NavLink to={match.url}>{breadcrumb}</NavLink>
@@ -27,16 +26,21 @@ const App = () => {
   </div>
 ));
 
+
   return(
+
     <>
-      <Global styles={GlobalCSS} />
+      <div className="main">
       <Router>
         <Breadcrumbs/>
-        <Route exact path="/"><ThumbnailGallery  setActiveThumbnail={setActiveThumbnail}/></Route>
-        <Route path="/second"><ActiveThumbnailWindow  activeThumbnail={activeThumbnail}/></Route>
+        <Route exact path="/"><PhotoGallery  setActiveThumbnail={setActiveThumbnail}/></Route>
+        <Route path="/detail"><ActivePhoto  activeThumbnail={activeThumbnail}/></Route>
       </Router>
+    </div>
     </>
 )
+
+
 }
 
 

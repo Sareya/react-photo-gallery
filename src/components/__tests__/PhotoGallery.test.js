@@ -1,44 +1,20 @@
-import ThumbnailGallery from '../ThumbnailGallery'
-import ThumbnailGrid from '../ThumbnailGrid'
-import ActiveThumbnailWindow from '../ActiveThumbnailWindow'
+import PhotoGallery from '../PhotoGallery'
 import renderer from 'react-test-renderer';
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { mount, shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16'
-// import configureStore from 'redux-mock-store';
-// import sinon from 'sinon';
-import { StaticRouter } from 'react-router-dom'
-import expect from "expect";
-
 
 jest.mock('axios')
-configure({ adapter: new Adapter() });
-// const mockStore = configureStore();
-// sinon.spy(ThumbnailGallery.prototype, 'useEffect');
 
 describe('Snapshot Testing', () => {
 
   it('Renders ThumbnailGallery snapshot as expected', () => {
-          const tree = renderer.create(<ThumbnailGallery />).toJSON();
+          const tree = renderer.create(<PhotoGallery />).toJSON();
           expect(tree).toMatchSnapshot();
   });
 
 });
 
 
-// test('Renders ActiveThumbnailWindow snapshot as expected', () => {
-//   const thumbnails={
-//                       "albumId": 1,
-//                       "id": 1,
-//                       "title": "accusamus beatae ad facilis cum similique qui sunt",
-//                       "url": "https://via.placeholder.com/600/92c952",
-//                       "thumbnailUrl": "https://via.placeholder.com/150/92c952"
-//                         }
-//
-//         const tree = renderer.create(<ActiveThumbnailWindow activeThumbnail={thumbnails}/>).toJSON();
-//         expect(tree).toMatchSnapshot();
-// });
 
 describe('getPhotos', () => {
   it('fetches successfully data from an API', async () => {

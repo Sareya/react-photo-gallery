@@ -4,13 +4,13 @@ import axios from 'axios'
 import { jsx } from '@emotion/core'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Link} from 'react-router-dom'
-import { ThumbnailGrid } from './ThumbnailGrid'
+import { PhotoGrid } from './PhotoGrid'
+import  '../styles/AppStyle.css'
 
 
-const ThumbnailGallery = (props) => {
+const PhotoGallery = (props) => {
 
   const [thumbnails, setThumbnails] = useState([])
-  // const [activeIndex, setActiveIndex] = useState(0)
   let [page, setPage] = useState(1)
 
   useEffect((page) => {
@@ -34,13 +34,13 @@ const ThumbnailGallery = (props) => {
   function RenderThumbnails(){
     return (
       thumbnails.length ? (
-           <InfiniteScroll style={{margin:'60px'}}
+           <InfiniteScroll className="scroll"
             dataLength={thumbnails.length}
             next={FetchMoreData}
             hasMore={true}
             loader={<h4>Loading...</h4>}>
-              <Link to="/second">
-              <ThumbnailGrid thumbnails={thumbnails} onClick={handleClick} />
+              <Link to="/detail">
+              <PhotoGrid thumbnails={thumbnails} onClick={handleClick} />
               </Link>
            </InfiniteScroll>
 
@@ -51,9 +51,7 @@ const ThumbnailGallery = (props) => {
   const FetchMoreData = () => {
 
       page=page+1
-      console.log(page)
       setPage(page)
-      console.log(page)
       getPhotos(page)
 
 
@@ -62,7 +60,6 @@ const ThumbnailGallery = (props) => {
   function handleClick (e){
 
     const activeIndex1 = e.target.getAttribute('data-index')
-    // setActiveIndex(activeIndex1)
     props.setActiveThumbnail(thumbnails[activeIndex1])
   }
 
@@ -76,4 +73,4 @@ return(
 )}
 
 
-export default ThumbnailGallery
+export default PhotoGallery

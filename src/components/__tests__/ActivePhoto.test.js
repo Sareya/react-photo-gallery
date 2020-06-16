@@ -1,4 +1,4 @@
-import ActiveThumbnailWindow from '../ActiveThumbnailWindow'
+import ActivePhoto from '../ActivePhoto'
 import renderer from 'react-test-renderer';
 import React from 'react';
 
@@ -13,7 +13,7 @@ describe('Snapshot Testing', () => {
                         "thumbnailUrl": "https://via.placeholder.com/150/92c952"
                           }
 
-          const tree = renderer.create(<ActiveThumbnailWindow activeThumbnail={thumbnails}/>).toJSON();
+          const tree = renderer.create(<ActivePhoto activeThumbnail={thumbnails}/>).toJSON();
           expect(tree).toMatchSnapshot();
   });
 
